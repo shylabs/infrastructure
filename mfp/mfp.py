@@ -42,7 +42,7 @@ def get_dt_today():
     get today's date as a datettime obj
     """
     today = get_today()
-    print(today)
+    #print(today)
     return datetime.date(today['year'], today['month'], today['day'])
 
 def get_weight(client):
@@ -50,8 +50,8 @@ def get_weight(client):
     god
     """
     measurements = client.get_measurements('Weight', get_dt_today())
-    print(measurements)
-    return measurements[0]
+    #should only access if weight has been taken
+    return measurements.get(get_dt_today())
 
 def get_water(client_day):
     """
@@ -76,14 +76,14 @@ def main():
     god
     """
     today = get_today()
-    print(today)
+    #print(today)
     info = init_client(today)
     client = info[0]
     client_day = info[1]
-    print("client", client)
-    print("client_day", client_day)
-    weight = get_weight(client, today)
-    print("weight", weight)
+    #print("client", client)
+    #print("client_day", client_day)
+    weight = get_weight(client)
+    #print("weight", weight)
     totals = get_totals(client_day)
     #print(totals)
     water = get_water(client_day)
