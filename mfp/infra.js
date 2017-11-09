@@ -30,6 +30,7 @@ async function webhook(data) {
   let form = new FormData();
   //TODO: theres gotta be a sick slick way to do this functionally
   for (const key in data) {
+    if (data[key] === null) data[key] = 0;
     form.append(key, data[key]); 
   }
   try {
