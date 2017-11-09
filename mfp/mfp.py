@@ -10,7 +10,7 @@ def init_client(date):
     """
     boot up mfp with steviehuh
     """
-    client = myfitnesspal.Client('steviehuh')
+    client = myfitnesspal.Client('steviehuh', 'znPiqk6KMpRJ')
     client_day = client.get_date(date['year'], date['month'], date['day'])
     return (client, client_day)
 
@@ -42,13 +42,16 @@ def get_dt_today():
     get today's date as a datettime obj
     """
     today = get_today()
+    print(today)
     return datetime.date(today['year'], today['month'], today['day'])
 
-def get_weight(client, date):
+def get_weight(client):
     """
     god
     """
-    return client.get_measurements('Weight', get_dt_today())[get_dt_today()]
+    measurements = client.get_measurements('Weight', get_dt_today())
+    print(measurements)
+    return measurements[0]
 
 def get_water(client_day):
     """
@@ -73,12 +76,14 @@ def main():
     god
     """
     today = get_today()
-    #print(today)
+    print(today)
     info = init_client(today)
     client = info[0]
     client_day = info[1]
+    print("client", client)
+    print("client_day", client_day)
     weight = get_weight(client, today)
-    #print("weight", weight)
+    print("weight", weight)
     totals = get_totals(client_day)
     #print(totals)
     water = get_water(client_day)
