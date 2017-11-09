@@ -4,13 +4,14 @@ const FormData = require('form-data')
 const R = require('ramda');
 
 function startMfp() {
-  const child = exec('python3 mfp.py', async (err, stdout, stderr) => {
+  const child = exec(`python3 ${__dirname}/mfp.py`, async (err, stdout, stderr) => {
     try {
       //TODO: Turn to pipe or ramda flow
       console.log("STDOUT from MFP:", stdout)
       await webhook(format(JSON.parse(stdout)));
     } catch (err) {
-      console.log("Something whent wrong",err); 
+      console.log(`Something went wrong err : ${err}, stderr: ${stderr}`); 
+      console.log(`Something went wrong stdout: ${stdout}`); 
     }
   });
 }
@@ -58,6 +59,7 @@ function format(data) {
     water : data.water
   }
   console.log("heres what were woring with", data);
+  console.log("dirname", __dirname);
   return data;
 }
 

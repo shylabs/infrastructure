@@ -18,6 +18,13 @@ RUN git clone https://github.com/shylabs/infrastructure
 
 WORKDIR /usr/local/src/infrastructure
 
+#Node dependencies
+RUN npm install
+
+#Installs MFP library
 RUN pip3 install myfitnesspal
+
+#Schedule node script
+RUN crontab /usr/local/src/infrastructure/mfp/crontab
 
 CMD ["/bin/sh"]
