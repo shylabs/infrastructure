@@ -32,9 +32,9 @@ def get_readable_date(date):
 
 def get_today():
     """
-    return current date as dict
+    return current date as dict minus one lol
     """
-    now = datetime.datetime.now()
+    now = datetime.datetime.now() - datetime.timedelta(days=1)
     return dict({'month':now.month, 'day':now.day, 'year':now.year})
 
 def get_dt_today():
