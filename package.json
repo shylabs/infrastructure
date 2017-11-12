@@ -5,7 +5,7 @@
   "main": "infra.js",
   "repository": {
     "type": "git",
-    "url" : "https://github.com/shylabs/infrastructure"
+    "url": "https://github.com/shylabs/infrastructure"
   },
   "dependencies": {
     "form-data": "^2.3.1",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "2echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"
