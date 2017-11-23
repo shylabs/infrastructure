@@ -24,7 +24,7 @@ RUN npm install
 #Installs MFP library
 RUN pip3 install myfitnesspal
 
-#Schedule node script
-RUN crontab /usr/local/src/infrastructure/mfp/crontab
+#Schedule node script -- deprecated in favor of lambda cron
+#RUN crontab /usr/local/src/infrastructure/mfp/crontab
 
-CMD ["/bin/sh"]
+CMD ["node", "/usr/local/src/infrastructure/mfp/infra.js"]
